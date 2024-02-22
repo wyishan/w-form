@@ -33,15 +33,9 @@ w-form是一款基于**uniapp+vue3**的**表单组件库**。
 
 ## 使用文档下载
 
-**下载链接一**
-
 注：此链接为http，**需要复制链接后在新窗口打开才可下载**。
 
 下载链接：[http://154.8.162.215:8082/w-form表单组件使用文档.zip](http://154.8.162.215:8082/w-form表单组件使用文档.zip)
-
-**下载链接二**
-
-百度云链接: https://pan.baidu.com/s/1tZIOPNORGusCdEJAF3lzBQ?pwd=t7ma 提取码: t7ma 
 
 **文档使用说明**
 
