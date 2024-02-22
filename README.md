@@ -14,7 +14,26 @@ w-form是一款基于uniapp+vue3的表单组件库。
 
 ### 使用文档下载
 
-。。。
+[http://154.8.162.215:8082/w-form表单组件使用文档.zip](http://154.8.162.215:8082/w-form表单组件使用文档.zip)
+
+
+
+### 安装
+
+第一步、将插件代码并放入项目根目录下。
+
+第二步、在`pages.json`中配置以下片段即可。
+
+```json
+  {
+    ...
+    "easycom": {
+      "custom": {
+        "^w-(.*)": "@/wform-components/components/w-$1/w-$1.vue"
+      }
+    }
+  }
+```
 
 
 
