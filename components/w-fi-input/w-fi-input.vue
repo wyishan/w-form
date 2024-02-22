@@ -2,7 +2,7 @@
   <ua-input 
     :type="type"
     :inputAlign="inputAlign"
-    :placeholder="placeholder" 
+    :placeholder="placeholderAuto" 
     :disabled="disabled"
     :maxlength="maxlength"
     :placeholderStyle="placeholderStyle"
@@ -61,7 +61,7 @@
       },
       placeholder: {
         type: String,
-        default: "请输入内容"
+        default: ""
       },
       disabled: {
         type: Boolean,
@@ -174,10 +174,10 @@
       const { ficValue, placeholder } = ficIntegrated({
         props
       });
-
+      
       return {
         ficValue,
-        placeholder
+        placeholderAuto: placeholder
       }
     },
     components: {

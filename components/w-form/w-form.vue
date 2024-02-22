@@ -6,11 +6,11 @@
     }"
   >
 		<scroll-view class="scroll-content"
+           :class="[`scroll-content-uid_${uid}`]"
 					 scroll-y 
 					 scroll-with-animation 
 					 :scroll-top="scrollTop" 
 					 @scroll="scrollChange">
-      <view class="gap"></view>
 			<slot></slot>
 		</scroll-view>
 		<slot name="bottom"></slot>
@@ -51,10 +51,6 @@
       //   type: Boolean,
       //   required: false
       // },
-      height:{
-        type: String,
-        default:'auto'
-      },
       required: {
         type: Boolean,
         default: false
@@ -62,10 +58,20 @@
 			rules: {
         type: Object,
         default: () => ({})
+      },
+      autoLock: {
+        type: Boolean,
+        default: false
       }
     },
     emits: ['modelChange'],
     setup(props,{emit}) {
+      let height;
+      uni.getSystemInfo({
+        success: res => {
+          height = props.autoLock ? `calc(100vh - ${res.windowTop}px)` : 'auto'
+        }
+      })
       const currentInstance = getCurrentInstance();
 
       // 获取所有活跃的app-form-item app-fi-***
@@ -145,7 +151,7 @@
         scrollAppointEl
       } = scrollIntegration({ 
         currentInstance, 
-        scrollSelector: '.app-form'
+        scrollSelector: '.scroll-content-uid_' + currentInstance.uid
       })
 
       // 向下发布
@@ -167,7 +173,9 @@
         scrollTop,
         old,
         scrollChange,
-        scrollAppointEl
+        scrollAppointEl,
+        uid: currentInstance.uid,
+        height
       }
     }
   })
@@ -182,7 +190,6 @@
   // height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   background-color: #F8F8F8;
   font-size: 28rpx;
   .read{

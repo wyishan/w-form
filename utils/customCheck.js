@@ -3,8 +3,7 @@ import Schema from '../libs/async-validator'
 
 export default ({ value, required, rule = [], type,  keywords }) => {
   if(isObject(rule)) rule = [rule] // rule为json的情况
-  console.log('required----',required)
-  console.log('rule----',rule)
+  
   return new Promise(((resolve,reject) => {
     
     if (required || rule.length) {

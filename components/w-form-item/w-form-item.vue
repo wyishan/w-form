@@ -1,6 +1,6 @@
 <template>
   <!--  :class="{apret:!!$_appFormBlock_apret}" -->
-  <view class="app-form-item" @click="formItemClick">
+  <view class="app-form-item" :class="['app-uid_' + uid]" @click="formItemClick">
     <!--  :class="{dispatch}" @click="itemClick" -->
 		<view class="app-form-item__content">
 			<view class="app-form-item__left">
@@ -79,6 +79,7 @@
     },
     setup(props) {
       const currentInstance = getCurrentInstance();
+      
       const appForm = inject('appForm',undefined);
       // 获取所有活跃的app-fi-***
       let appFicList = getChildren(FIC_PROT);
@@ -98,13 +99,8 @@
       })
 
       // (获取本组件根节点)
-      let node;
       const getNode = () => {
-        if (node) {
-          return node
-        } else {
-          return node = uni.createSelectorQuery().in(currentInstance).select('.app-form-item')
-        }
+        return uni.createSelectorQuery().in(currentInstance).select(`.app-uid_${currentInstance.uid}`)
       }
 
       // [校验模块]
@@ -215,7 +211,8 @@
       return {
         bottomMessage,
         isChildExistVali,
-        formItemClick
+        formItemClick,
+        uid: currentInstance.uid
       }
     }
   })
